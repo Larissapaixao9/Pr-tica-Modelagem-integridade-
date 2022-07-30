@@ -20,11 +20,11 @@ CREATE TABLE "bankAccount"(
 CREATE TABLE transactions(
   id SERIAL PRIMARY KEY,
 	"bankAccountId" INTEGER REFERENCES "bankAccount"(id),
-	amount INTEGER NOT NULL ,
+	amount NUMERIC NOT NULL ,
 	type TEXT NOT NULL,
 	time TIME DEFAULT NOW(), 
 	description TEXT, 
-	cancelled BOOLEAN
+	cancelled BOOLEAN NOT NULL DEFAULT false
 )
 
 --Cria tabela creditCards
@@ -37,7 +37,7 @@ CREATE TABLE "creditCards"(
 	"expirationMonth" VARCHAR(2) NOT NULL, 
 	"expirationYear" VARCHAR(4) NOT NULL, 
 	password TEXT NOT NULL, 
-	limit_1 INTEGER NOT NULL
+	"limit" INTEGER NOT NULL
 )
 --Cria tabela customerPhones
 CREATE TABLE "customersPhones"(
